@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest something politescrape could do.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the task, not just the feature. An example page helps.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could politescrape help?
+  - type: checkboxes
+    id: polite
+    attributes:
+      label: Fits the project
+      options:
+        - label: This does not involve getting around bot checks, CAPTCHAs, logins or paywalls.
+          required: true

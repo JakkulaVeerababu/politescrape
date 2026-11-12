@@ -1,0 +1,10 @@
+{
+  "description": "Quotes on https://quotes.toscrape.com/, a sandbox site made for scraping practice",
+  "items": ".quote",
+  "fields": {
+    "text": ".text",
+    "author": ".author",
+    "tags": { "selector": ".tag", "all": true },
+    "author_url": { "selector": "a[href^='/author/']", "attr": "href", "type": "url" }
+  }
+}

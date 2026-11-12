@@ -1,0 +1,12 @@
+{
+  "description": "Books on https://books.toscrape.com/, a sandbox site made for scraping practice",
+  "items": "article.product_pod",
+  "fields": {
+    "title": "h3 a@title",
+    "price": { "selector": ".price_color", "type": "number" },
+    "in_stock": { "selector": ".instock.availability", "type": "boolean" },
+    "rating": { "selector": "p.star-rating", "attr": "class", "pattern": "star-rating (\\w+)" },
+    "url": { "selector": "h3 a", "attr": "href", "type": "url" },
+    "image": { "selector": "img", "attr": "src", "type": "url" }
+  }
+}

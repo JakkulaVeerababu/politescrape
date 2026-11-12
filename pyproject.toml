@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "politescrape"
+dynamic = ["version"]
+description = "Polite, structured web scraping: robots.txt-aware fetching that turns any page into JSON, tables and Markdown."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Veerababu Jakkula" }]
+keywords = [
+  "web scraping",
+  "scraper",
+  "crawler",
+  "robots.txt",
+  "json-ld",
+  "markdown",
+  "html tables",
+  "data extraction",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+  "Topic :: Text Processing :: Markup :: HTML",
+  "Typing :: Typed",
+]
+dependencies = ["httpx>=0.27,<1", "beautifulsoup4>=4.12"]
+
+[project.optional-dependencies]
+lxml = ["lxml>=5"]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.15", "mypy>=1.15"]
+
+[project.urls]
+Homepage = "https://github.com/JakkulaVeerababu/politescrape"
+Documentation = "https://github.com/JakkulaVeerababu/politescrape#readme"
+Issues = "https://github.com/JakkulaVeerababu/politescrape/issues"
+Changelog = "https://github.com/JakkulaVeerababu/politescrape/blob/main/CHANGELOG.md"
+
+[project.scripts]
+politescrape = "politescrape.cli:main"
+
+[tool.hatch.version]
+path = "src/politescrape/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/politescrape"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "docs", "examples", "README.md", "CHANGELOG.md", "LICENSE"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "C4", "PT", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers", "--strict-config"]
+xfail_strict = true
+
+[tool.coverage.run]
+source = ["politescrape"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 90
