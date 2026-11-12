@@ -3,8 +3,9 @@
 **Polite, structured web scraping for Python.** Point it at a page and get clean data back: metadata, embedded structured data (JSON-LD), tables, links, and the main content as Markdown. It reads each site's robots.txt, paces its requests, and backs off when a site asks it to.
 
 [![CI](https://github.com/JakkulaVeerababu/politescrape/actions/workflows/ci.yml/badge.svg)](https://github.com/JakkulaVeerababu/politescrape/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/politescrape)](https://pypi.org/project/politescrape/)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/JakkulaVeerababu/politescrape/blob/main/LICENSE)
 
 ```console
 $ politescrape extract https://books.toscrape.com/ --schema examples/books.json
@@ -30,10 +31,8 @@ Most scraping projects start with the same chores: fetch without hammering the s
 
 ## Install
 
-politescrape is not on PyPI yet. Until it is, install it from GitHub:
-
 ```bash
-pip install "git+https://github.com/JakkulaVeerababu/politescrape"
+pip install politescrape
 ```
 
 This needs Python 3.10 or newer. For faster parsing, also install `lxml` and pass `parser="lxml"` to `Client`.
@@ -128,7 +127,7 @@ from politescrape import Page
 page = Page.from_html(html, url="https://example.com/where-it-came-from")
 ```
 
-See [`examples/`](examples) for complete scripts.
+See [`examples/`](https://github.com/JakkulaVeerababu/politescrape/tree/main/examples) for complete scripts.
 
 ## What you get from a page
 
@@ -139,7 +138,7 @@ See [`examples/`](examples) for complete scripts.
 | `page.tables` | Data tables. Cells that span rows or columns are repeated so rows line up with the headings, stacked header rows are merged, and layout tables are skipped. Each `Table` has `records()`, `to_csv()` and `save_csv()`. |
 | `page.links` | Absolute links with their text, `rel` values and whether they stay on the site. `mailto:`, `javascript:` and fragment-only links are left out. |
 | `page.content` | The main content as `markdown` and `text`, with navigation, cookie banners, sidebars, share buttons and footers removed. |
-| `page.extract(schema)` | Your own fields; see [the schema reference](docs/extraction-schema.md). |
+| `page.extract(schema)` | Your own fields; see [the schema reference](https://github.com/JakkulaVeerababu/politescrape/blob/main/docs/extraction-schema.md). |
 
 `page.to_dict()` returns all of it as plain data, ready for `json.dumps`.
 
@@ -159,12 +158,12 @@ See [`examples/`](examples) for complete scripts.
 
 politescrape is for reading public pages the way their owners allow. It does not solve CAPTCHAs, get around bot checks, rotate IP addresses or user agents to avoid detection, log in, or get past paywalls. It does not run JavaScript, so pages that build their content in the browser will look empty. If a site offers an API or a data download, use that instead.
 
-Before you scrape, read [Scraping responsibly](docs/responsible-scraping.md).
+Before you scrape, read [Scraping responsibly](https://github.com/JakkulaVeerababu/politescrape/blob/main/docs/responsible-scraping.md).
 
 ## Contributing
 
-Bug reports, ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up a development environment and run the checks.
+Bug reports, ideas and pull requests are welcome. See [CONTRIBUTING.md](https://github.com/JakkulaVeerababu/politescrape/blob/main/CONTRIBUTING.md) for how to set up a development environment and run the checks.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/JakkulaVeerababu/politescrape/blob/main/LICENSE)
